@@ -1,19 +1,21 @@
-import { Form, Row } from "antd";
+import { Flex, Form, Row } from "antd";
 import React from "react";
 
 function ContactList({ contacts }) {
   return (
-    <div>
-      <h1>Contact List</h1>
+    <Flex justify="center" align="flex-start" vertical>
+      <h1 style={{ color: "#f5f5f5", margin: "50px 0", fontSize: "20px" }}>
+        Contact List
+      </h1>
       {contacts.map((contact) => (
         <Row style={{ display: "flex", gap: "10px" }}>
-          <Form.Item>{contact.name}</Form.Item>
-          <Form.Item>{contact.lastName}</Form.Item>
-          <Form.Item>{contact.gmail}</Form.Item>
-          <Form.Item>{contact.number}</Form.Item>
+          <Form.Item style={{ color: "#f5f5f5" }}>{contact.name}</Form.Item>
+          <Form.Item style={{ color: "#f5f5f5" }}>{contact.lastName}</Form.Item>
+          <Form.Item style={{ color: "#f5f5f5" }}>{contact.gmail}</Form.Item>
+          <Form.Item style={{ color: "#f5f5f5" }}>{contact.number}</Form.Item>
         </Row>
       ))}
-    </div>
+    </Flex>
   );
 }
 
