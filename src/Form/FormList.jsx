@@ -1,7 +1,9 @@
-import { Form, Input, Row, Col, Button, Flex } from "antd";
+import { Form, Input, Row, Col, Button, Flex, Modal } from "antd";
 import React, { useState } from "react";
 
 function FormList({ formInfo, setFormInfo, setContacts }) {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   const changeHandler = (e) => {
     const name = e.target.name;
     const value = e.target.value;
@@ -15,6 +17,15 @@ function FormList({ formInfo, setFormInfo, setContacts }) {
       gmail: "",
       number: "",
     });
+    setIsModalOpen(false);
+  };
+
+  const showModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const handleCancel = () => {
+    setIsModalOpen(false);
   };
 
   return (
@@ -80,12 +91,49 @@ function FormList({ formInfo, setFormInfo, setContacts }) {
         </Form>
       </Flex>
       <Flex justify="center">
-        <Button style={{ width: "50%" ,color:"#003366",fontWeight:"600" }} onClick={addHanlder}>
+        <Button
+          style={{ width: "50%", color: "#003366", fontWeight: "600" }}
+          onClick={showModal}
+        >
           Add Contact
         </Button>
+        <Modal
+          title="Are you sure?"
+          open={isModalOpen}
+          onOk={addHanlder}
+          onCancel={handleCancel}
+        ></Modal>
       </Flex>
     </>
   );
 }
 
 export default FormList;
+
+// import React, { useState } from 'react';
+// import { Button, Modal } from 'antd';
+// const App = () => {
+//   const [isModalOpen, setIsModalOpen] = useState(false);
+//   const showModal = () => {
+//     setIsModalOpen(true);
+//   };
+//   const handleOk = () => {
+//     setIsModalOpen(false);
+//   };
+//   const handleCancel = () => {
+//     setIsModalOpen(false);
+//   };
+//   return (
+//     <>
+//       <Button type="primary" onClick={showModal}>
+//         Open Modal
+//       </Button>
+//       <Modal title="Basic Modal" open={isModalOpen} onOk={handleOk} onCancel={handleCancel}>
+//         <p>Some contents...</p>
+//         <p>Some contents...</p>
+//         <p>Some contents...</p>
+//       </Modal>
+//     </>
+//   );
+// };
+// export default App;
