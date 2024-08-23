@@ -23,7 +23,7 @@ function FormList({ formInfo, setFormInfo, setContacts }) {
         <Form
           labelCol={{ span: 0 }}
           wrapperCol={{ span: 24 }}
-          style={{ margin: "20px" }}
+          style={{ margin: "20px 0" }}
         >
           <Row gutter={24}>
             <Col span={12}>
@@ -80,7 +80,7 @@ function FormList({ formInfo, setFormInfo, setContacts }) {
         </Form>
       </Flex>
       <Flex justify="center">
-        <Button style={{ width: "50%" }} onClick={addHanlder}>
+        <Button style={{ width: "50%" ,color:"#003366",fontWeight:"600" }} onClick={addHanlder}>
           Add Contact
         </Button>
       </Flex>

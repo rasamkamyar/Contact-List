@@ -14,14 +14,7 @@ function App() {
   const [contacts, setContacts] = useState([]);
 
   return (
-    <div
-      // style={{
-      //   display: "flex",
-      //   flexDirection: "column",
-      //   width: "100%",
-      //   height: "100%",
-      // }}
-    >
+    <div style={{width:"fit-content",margin:"0 auto"}}>
       <header className={Styles.header}>
         <h1>Connectify</h1>
         <h3>Manage your contact list easily</h3>
