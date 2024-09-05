@@ -10,14 +10,19 @@ function FormList({ formInfo, setFormInfo, setContacts }) {
     setFormInfo((form) => ({ ...form, [name]: value }));
   };
   const addHanlder = () => {
-    setContacts((contact) => [...contact, formInfo]);
-    setFormInfo({
-      name: "",
-      lastName: "",
-      gmail: "",
-      number: "",
-    });
-    setIsModalOpen(false);
+    const { name, lastName, gmail, number } = formInfo;
+    if (name && lastName && gmail && number) {
+      setContacts((contact) => [...contact, formInfo]);
+      setFormInfo({
+        name: "",
+        lastName: "",
+        gmail: "",
+        number: "",
+      });
+      setIsModalOpen(false);
+    } else {
+      showModal();
+    }
   };
 
   const showModal = () => {
@@ -93,14 +98,15 @@ function FormList({ formInfo, setFormInfo, setContacts }) {
       <Flex justify="center">
         <Button
           style={{ width: "50%", color: "#003366", fontWeight: "600" }}
-          onClick={showModal}
+          onClick={addHanlder}
         >
           Add Contact
         </Button>
         <Modal
-          title="Are you sure?"
+          title="Please enter all data!"
           open={isModalOpen}
-          onOk={addHanlder}
+          onOk={null}
+          okButtonProps={{ style: { display: "none" } }}
           onCancel={handleCancel}
         ></Modal>
       </Flex>
@@ -109,31 +115,3 @@ function FormList({ formInfo, setFormInfo, setContacts }) {
 }
 
 export default FormList;
-
-// import React, { useState } from 'react';
-// import { Button, Modal } from 'antd';
-// const App = () => {
-//   const [isModalOpen, setIsModalOpen] = useState(false);
-//   const showModal = () => {
-//     setIsModalOpen(true);
-//   };
-//   const handleOk = () => {
-//     setIsModalOpen(false);
-//   };
-//   const handleCancel = () => {
-//     setIsModalOpen(false);
-//   };
-//   return (
-//     <>
-//       <Button type="primary" onClick={showModal}>
-//         Open Modal
-//       </Button>
-//       <Modal title="Basic Modal" open={isModalOpen} onOk={handleOk} onCancel={handleCancel}>
-//         <p>Some contents...</p>
-//         <p>Some contents...</p>
-//         <p>Some contents...</p>
-//       </Modal>
-//     </>
-//   );
-// };
-// export default App;
